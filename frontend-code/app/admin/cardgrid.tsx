@@ -8,8 +8,8 @@ const CardGrid = ({ items }) => {
     return (
         <div className="max-w-4xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 hover:cursor-pointer">
             {items.map((item, i) => (
-                <div key={i} className={`col-span-${i === 0 ? '3' : (i % 2 === 0 ? '1' : '2')}`}>
-                    <div className="bg-white bg-opacity-25 hover:bg-opacity-35 rounded-lg shadow-md overflow-hidden">
+                <div key={i} className={`col-span-${i === 0 ? `3` : (i % 2 === 1 ? `1` : `1`)}`}>
+                    <div className="bg-white bg-opacity-25 hover:bg-opacity-35 rounded-lg shadow-lg shadow-indigo-700/80">
                         <div className="p-4 flex flex-col justify-between h-[300px]">
                             <div>
                                 <div className="mb-2">{item.header || <Skeleton />}</div>
@@ -24,5 +24,6 @@ const CardGrid = ({ items }) => {
         </div>
     );
 };
+
 
 export default CardGrid;

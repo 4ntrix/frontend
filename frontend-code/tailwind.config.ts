@@ -17,6 +17,9 @@ const config: Config = {
         "gradient-conic":
           "conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))",
       },
+      boxShadow: {
+        'left-right': '0 6px 10px -4px rgba(0, 0, 0, 0.1), 0 1px 18px 0 rgba(0, 0, 0, 0.08)',
+      },
     },
   },
   plugins: [addVariablesForColors],
@@ -28,7 +31,7 @@ function addVariablesForColors({ addBase, theme }: any) {
   let newVars = Object.fromEntries(
     Object.entries(allColors).map(([key, val]) => [`--${key}`, val])
   );
- 
+
   addBase({
     ":root": newVars,
   });

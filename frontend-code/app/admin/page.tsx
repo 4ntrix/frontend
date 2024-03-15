@@ -1,5 +1,7 @@
 import React from "react";
 import CardGrid from "./cardgrid";
+import { NavbarDemo } from "../nav";
+import Footer from "../components/Footer";
 
 const items = [
     {
@@ -48,9 +50,13 @@ const items = [
 const YourPage = () => {
     return (
         <div>
+            <div className="pb-16">
+                <NavbarDemo></NavbarDemo>
+            </div>
             <div className="py-10">
                 <CardGrid items={items} />
             </div>
+            <Footer />
         </div>
     );
 };

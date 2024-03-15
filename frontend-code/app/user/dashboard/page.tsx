@@ -1,5 +1,7 @@
 import React from "react";
 import CardGrid from "./grid";
+import { NavbarDemo } from "@/app/nav";
+import Footer from "@/app/components/Footer";
 
 const items = [
     {
@@ -36,14 +38,20 @@ const items = [
 const YourPage = () => {
     const mapCount = 5;
     return (
-        <div className="py-10">
-            {Array.from({ length: mapCount }).map((_, index) => (
-                <div key={index} className="py-2">
-                    <CardGrid items={items} />
-                </div>
-            ))}
+        <div>
+            <div className="pb-11">
+                <NavbarDemo></NavbarDemo>
+            </div>
+            <div className="py-10">
+                {Array.from({ length: mapCount }).map((_, index) => (
+                    <div key={index} className="py-2">
+                        <CardGrid items={items} />
+                    </div>
+                ))}
+            </div>
+            <Footer />
         </div>
-        
+
     );
 };
 

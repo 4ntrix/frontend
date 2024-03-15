@@ -10,7 +10,7 @@ export function HeroScrollDemo() {
         titleComponent={
           <>
             <h1 className="text-4xl font-semibold text-white">
-            Transform events with 4NTRIX <br />
+            Transforming events with 4NTRIX <br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
               Secure, Transparent & Decentralized
               </span>
