@@ -3,8 +3,8 @@ import CardGrid from "./cardgrid";
 
 const items = [
     {
-        title: "The Dawn of Innovation",
-        description: "Explore the birth of groundbreaking ideas and inventions.",
+        title: "Add New Event",
+        description: "Experience the genesis of groundbreaking ideas and inventions at our 'Add New Event'",
     },
     {
         title: "The Digital Revolution",
@@ -26,6 +26,18 @@ const items = [
     {
         title: "The Joy of Creation",
         description: "Experience the thrill of bringing ideas to life.",
+    },
+    {
+        title: "The Spirit of Adventure",
+        description: "Embark on exciting journeys and thrilling discoveries.",
+    },
+    {
+        title: "The Spirit of Adventure",
+        description: "Embark on exciting journeys and thrilling discoveries.",
+    },
+    {
+        title: "The Spirit of Adventure",
+        description: "Embark on exciting journeys and thrilling discoveries.",
     },
     {
         title: "The Spirit of Adventure",
