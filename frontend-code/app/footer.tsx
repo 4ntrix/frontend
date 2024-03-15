@@ -4,24 +4,28 @@ import { BackgroundBeams } from "./components/ui/background-beams";
 
 export function BackgroundBeamsDemo() {
   return (
-    <div className="h-[40rem] w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
+    <div className="h-[60rem] w-full rounded-md bg-neutral-950 relative flex flex-col items-center justify-center antialiased">
       <div className="max-w-2xl mx-auto p-4">
-        <h1 className="relative z-10 text-lg md:text-7xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
-          Join the waitlist
+        <h1 className="relative z-10 text-md  md:text-6xl  bg-clip-text text-transparent bg-gradient-to-b from-neutral-200 to-neutral-600  text-center font-sans font-bold">
+          Join the Revolution
         </h1>
         <p></p>
-        <p className="text-neutral-500 max-w-lg mx-auto my-2 text-sm text-center relative z-10">
-          Welcome to MailJet, the best transactional email service on the web.
-          We provide reliable, scalable, and customizable email solutions for
-          your business. Whether you&apos;re sending order confirmations,
-          password reset emails, or promotional campaigns, MailJet has got you
-          covered.
+        <p className="text-neutral-500 max-w-lg mx-auto my-2 text-lg text-center p-2 relative z-10">
+          This project is poised to revolutionize event management by
+          introducing a secure, transparent, and decentralized ticketing
+          ecosystem powered by blockchain technology and NFTs. Through the
+          issuance of unique digital assets representing event tickets, it
+          ensures tamper-proof authenticity and eliminates the risk of fraud. By
+          decentralizing ticket transactions, it fosters peer-to-peer
+          engagement, reducing fees and democratizing access to events. The
+          transparent ledger of blockchain records every ticket transaction,
+          ensuring accountability and trust among organizers and attendees.
+          Additionally, NFTs enable personalized experiences, fan engagement,
+          and global accessibility while promoting environmental sustainability
+          through paperless ticketing. This innovative approach promises to
+          redefine the event industry, offering a seamless, inclusive, and
+          engaging experience for all stakeholders involved.
         </p>
-        <input
-          type="text"
-          placeholder="hi@manuarora.in"
-          className="rounded-lg border border-neutral-800 focus:ring-2 focus:ring-teal-500  w-full relative z-10 mt-4  bg-neutral-950 placeholder:text-neutral-700"
-        />
       </div>
       <BackgroundBeams />
     </div>
