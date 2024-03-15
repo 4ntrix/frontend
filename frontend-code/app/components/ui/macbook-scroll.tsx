@@ -68,14 +68,14 @@ export const MacbookScroll = ({
   return (
     <div
       ref={ref}
-      className="min-h-[200vh]  flex flex-col items-center py-0 md:py-80 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
+      className="min-h-[200vh] flex flex-col items-center py-0 md:py-40 justify-start flex-shrink-0 [perspective:800px] transform md:scale-100  scale-[0.35] sm:scale-50"
     >
       <motion.h2
         style={{
           translateY: textTransform,
           opacity: textOpacity,
         }}
-        className="dark:text-white text-neutral-800 text-3xl font-bold mb-20 text-center"
+        className="dark:text-white text-neutral-800 text-[4rem] font-bold mb-20 text-center"
       >
         {title || (
           <span>
@@ -104,7 +104,7 @@ export const MacbookScroll = ({
           <div className="mx-auto w-[80%] h-full">
             <Keypad />
           </div>
-          <div className="mx-auto w-[10%] overflow-hidden  h-full">
+          <div className="mx-auto w-[10%] overflow-hidden h-full">
             <SpeakerGrid />
           </div>
         </div>
