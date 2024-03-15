@@ -1,7 +1,7 @@
 import React from "react";
 import CardGrid from "./cardgrid";
-import { NavbarDemo } from "../nav";
-import Footer from "../components/Footer";
+import { NavbarDemo } from "../../nav";
+import Footer from "../../components/Footer";
 
 const items = [
     {

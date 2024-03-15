@@ -6,7 +6,7 @@ import { cn } from "@/utils/cn";
 export function NavbarDemo() {
   return (
     <div className="relative w-full flex items-center justify-center">
-      <Navbar className="top-2" />
+      <Navbar className="top-2 border border-white-2 rounded-full" />
     </div>
   );
 }
@@ -20,15 +20,14 @@ function Navbar({ className }: { className?: string }) {
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="User">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/web-dev">Buy Tickets</HoveredLink>
-            <HoveredLink href="/interface-design">View Purchased Tickets</HoveredLink>
+            <HoveredLink href="/user/buy-tickets">Buy Tickets</HoveredLink>
+            <HoveredLink href="/user/your-tickets">View Purchased Tickets</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Admin">
           <div className="flex flex-col space-y-4 text-sm">
-            <HoveredLink href="/hobby">List NFT</HoveredLink>
-            <HoveredLink href="/individual">Mark Attendance</HoveredLink>
-            <HoveredLink href="/team">View Metadata</HoveredLink>
+            <HoveredLink href="/admin/list-nft">List NFT</HoveredLink>
+            <HoveredLink href="/admin/dashboard">Dashboard</HoveredLink>
           </div>
         </MenuItem>
         <button className="bg-transparent text-red-500"> Connect</button>
