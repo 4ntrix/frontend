@@ -38,7 +38,7 @@ const YourPage = () => {
     return (
         <div className="py-10">
             {Array.from({ length: mapCount }).map((_, index) => (
-                <div key={index}>
+                <div key={index} className="py-2">
                     <CardGrid items={items} />
                 </div>
             ))}
