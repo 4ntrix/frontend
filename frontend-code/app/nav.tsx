@@ -1,7 +1,8 @@
 "use client";
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./components/ui/navbar-menu";
 import { cn } from "@/utils/cn";
+import { Contract, ethers } from "ethers";
 
 export function NavbarDemo() {
   return (
@@ -11,7 +12,56 @@ export function NavbarDemo() {
   );
 }
 
+
 function Navbar({ className }: { className?: string }) {
+  const [currentAccount, setCurrentAccount] = useState<string | null>(null);
+  const [errorMessage, setErrorMessage] = useState<string | null>(null);
+
+  const connectWallet = async () => {
+    try {
+      if (!window.ethereum) {
+        window.alert("Please install MetaMask.");
+        return;
+      }
+
+      const accounts = await window.ethereum.request({
+        method: "eth_requestAccounts",
+      });
+
+      setCurrentAccount(accounts[0]);
+
+      window.ethereum.on("accountsChanged", (newAccounts) => {
+        if (newAccounts.length === 0) {
+          setCurrentAccount(null);
+        } else {
+          setCurrentAccount(newAccounts[0]);
+        }
+      });
+
+    } catch (error) {
+      console.error(`Error connecting wallet: ${error.message}`);
+      setErrorMessage(error.message);
+    }
+  };
+
+  useEffect(() => {
+    const handleAccountsChanged = (accounts: string[]) => {
+      if (accounts.length === 0) {
+        setCurrentAccount(null);
+      } else {
+        setCurrentAccount(accounts[0]);
+      }
+    };
+
+    if (window.ethereum) {
+      window.ethereum.on("accountsChanged", handleAccountsChanged);
+
+      return () => {
+        window.ethereum.off("accountsChanged", handleAccountsChanged);
+      };
+    }
+  }, []);
+
   const [active, setActive] = useState<string | null>(null);
   return (
     <div
@@ -30,7 +80,14 @@ function Navbar({ className }: { className?: string }) {
             <HoveredLink href="/admin/dashboard">Dashboard</HoveredLink>
           </div>
         </MenuItem>
-        <button className="bg-transparent text-red-500"> Connect</button>
+        {currentAccount ? (
+          <span>{currentAccount}</span>
+        ) : (
+          <button className="bg-transparent text-red-500" onClick={connectWallet}>
+            Connect Wallet
+          </button>
+        )}
+        {errorMessage && <p>{errorMessage}</p>}
       </Menu>
     </div>
   );
