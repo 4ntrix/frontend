@@ -2,6 +2,7 @@
 // import { BentoGridDemo } from './grid';
 import { MacbookScrollDemo } from './mac';
 import { StickyScroll } from './sticksc';
+import { BackgroundBeamsDemo } from './footer';
 
 export default function Home() {
   // Define some content for the StickyScroll component
@@ -18,6 +19,7 @@ export default function Home() {
       <MacbookScrollDemo />
       {/* Pass the content array as a prop to the StickyScroll component */}
       <StickyScroll content={content} />
+      <BackgroundBeamsDemo />
     </main>
   );
 }
