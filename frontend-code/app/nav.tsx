@@ -1,4 +1,4 @@
-"use client";
+'use client';
 import React, { useState, useEffect } from "react";
 import { HoveredLink, Menu, MenuItem, ProductItem } from "./components/ui/navbar-menu";
 import { cn } from "@/utils/cn";
@@ -30,7 +30,7 @@ function Navbar({ className }: { className?: string }) {
 
       setCurrentAccount(accounts[0]);
 
-      window.ethereum.on("accountsChanged", (newAccounts) => {
+      window.ethereum.on("accountsChanged", (newAccounts: string | any[]) => {
         if (newAccounts.length === 0) {
           setCurrentAccount(null);
         } else {
@@ -81,7 +81,7 @@ function Navbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
         {currentAccount ? (
-          <span>{currentAccount}</span>
+          <span className="text-red-500">{currentAccount}</span>
         ) : (
           <button className="bg-transparent text-red-500" onClick={connectWallet}>
             Connect Wallet
