@@ -1,8 +1,8 @@
 'use client';
-import React, { useState, useEffect } from "react";
-import { HoveredLink, Menu, MenuItem, ProductItem } from "./components/ui/navbar-menu";
+import React, { useContext, useEffect, useState } from "react";
+import { HoveredLink, Menu, MenuItem } from "./components/ui/navbar-menu";
 import { cn } from "@/utils/cn";
-import { Contract, ethers } from "ethers";
+import { BlockchainConfig } from "./Context/AppConfig";
 
 export function NavbarDemo() {
   return (
@@ -12,67 +12,29 @@ export function NavbarDemo() {
   );
 }
 
-
 function Navbar({ className }: { className?: string }) {
-  const [currentAccount, setCurrentAccount] = useState<string | null>(null);
-  const [errorMessage, setErrorMessage] = useState<string | null>(null);
-
-  const connectWallet = async () => {
-    try {
-      if (!(window as any).ethereum) {
-        window.alert("Please install MetaMask.");
-        return;
-      }
-
-      const accounts = await (window as any).ethereum.request({
-        method: "eth_requestAccounts",
-      });
-
-      setCurrentAccount(accounts[0]);
-
-      window.ethereum.on("accountsChanged", (newAccounts: string | any[]) => {
-        if (newAccounts.length === 0) {
-          setCurrentAccount(null);
-        } else {
-          setCurrentAccount(newAccounts[0]);
-        }
-      });
-
-    } catch (error) {
-      console.error(`Error connecting wallet: ${error.message}`);
-      setErrorMessage(error.message);
-    }
-  };
+  const [active, setActive] = useState<string | null>(null);
+  const { connectWallet, currentAccount, errorMessage } = useContext(BlockchainConfig);
 
   useEffect(() => {
-    const handleAccountsChanged = (accounts: string[]) => {
-      if (accounts.length === 0) {
-        setCurrentAccount(null);
-      } else {
-        setCurrentAccount(accounts[0]);
-      }
+    const fetchData = async () => {
+      await connectWallet();
     };
+    fetchData();
 
-    if (window.ethereum) {
-      window.ethereum.on("accountsChanged", handleAccountsChanged);
+    return () => {
+      // Cleanup function to handle state updates on unmounted component
+      // (not necessary for connectWallet but good practice)
+    };
+  }, [connectWallet]);
 
-      return () => {
-        window.ethereum.off("accountsChanged", handleAccountsChanged);
-      };
-    }
-  }, []);
-
-  const [active, setActive] = useState<string | null>(null);
   return (
-    <div
-      className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}
-    >
+    <div className={cn("fixed top-10 inset-x-0 max-w-2xl mx-auto z-50", className)}>
       <Menu setActive={setActive}>
         <MenuItem setActive={setActive} active={active} item="User">
           <div className="flex flex-col space-y-4 text-sm">
             <HoveredLink href="/user/buy-tickets">Buy Tickets</HoveredLink>
-            <HoveredLink href="/user/your-tickets">View Purchases</HoveredLink>
-            <HoveredLink href="/user/profile">Onboarding </HoveredLink>
+            <HoveredLink href="/user/your-tickets">View Purchased Tickets</HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Admin">
@@ -82,13 +44,12 @@ function Navbar({ className }: { className?: string }) {
           </div>
         </MenuItem>
         {currentAccount ? (
-          <span className="text-red-500">{currentAccount}</span>
+          <span className="text-red-500">{`${currentAccount.slice(0, 5)}...${currentAccount.slice(currentAccount.length - 5)}`}</span>
         ) : (
-          <button className="bg-transparent text-red-500" onClick={connectWallet}>
+          <button className="bg-transparent text-red-500 hover:text-red-200 hover:cursor-pointer" onClick={connectWallet}>
             Connect Wallet
           </button>
         )}
-        {errorMessage && <p>{errorMessage}</p>}
       </Menu>
     </div>
   );
