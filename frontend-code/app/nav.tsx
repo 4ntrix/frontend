@@ -19,12 +19,12 @@ function Navbar({ className }: { className?: string }) {
 
   const connectWallet = async () => {
     try {
-      if (!window.ethereum) {
+      if (!(window as any).ethereum) {
         window.alert("Please install MetaMask.");
         return;
       }
 
-      const accounts = await window.ethereum.request({
+      const accounts = await (window as any).ethereum.request({
         method: "eth_requestAccounts",
       });
 
@@ -71,7 +71,8 @@ function Navbar({ className }: { className?: string }) {
         <MenuItem setActive={setActive} active={active} item="User">
           <div className="flex flex-col space-y-4 text-sm">
             <HoveredLink href="/user/buy-tickets">Buy Tickets</HoveredLink>
-            <HoveredLink href="/user/your-tickets">View Purchased Tickets</HoveredLink>
+            <HoveredLink href="/user/your-tickets">View Purchases</HoveredLink>
+            <HoveredLink href="/user/profile">Onboarding </HoveredLink>
           </div>
         </MenuItem>
         <MenuItem setActive={setActive} active={active} item="Admin">
