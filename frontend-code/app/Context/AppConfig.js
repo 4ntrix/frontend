@@ -38,6 +38,8 @@ export const BlockchainProvider = ({ children }) => {
         }
     };
 
+    
+
 
     return (
         <BlockchainConfig.Provider value={{ connectWallet, currentAccount, errorMessage }}>

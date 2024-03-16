@@ -1,5 +1,5 @@
 import React from "react";
-import {SignupFormDemo} from "@/app/user/profile/sign";
+import {SignupFormDemo} from "@/app/admin/list-nft/sign";
 import { NavbarDemo } from "@/app/nav";
 import Footer from "@/app/components/Footer";
 
