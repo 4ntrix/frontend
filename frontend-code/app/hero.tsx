@@ -13,6 +13,7 @@ export function HeroScrollDemo() {
             Transforming events with 4NTRIX <br />
               <span className="text-4xl md:text-[6rem] font-bold mt-1 leading-none">
               Secure, Transparent & Decentralized
+              <br />
               </span>
             </h1>
           </>
